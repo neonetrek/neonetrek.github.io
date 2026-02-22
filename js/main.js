@@ -102,19 +102,24 @@
     return SAMPLE_SERVERS;
   }
 
+  function serverCardId(server) {
+    return 'server-' + escapeHtml(server.name || 'Unnamed Server')
+      .replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+  }
+
   function renderServerCard(server) {
     const name = escapeHtml(server.name || 'Unnamed Server');
     const location = escapeHtml(server.location || 'Unknown');
     const description = escapeHtml(server.description || '');
-    const id = 'server-' + name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+    const id = serverCardId(server);
 
-    const joinBtn = server.url
-      ? `<a class="server-join-btn" href="${escapeHtml(server.url)}" target="_blank" rel="noopener noreferrer">Play in Browser</a>`
-      : `<span class="server-join-btn server-join-disabled">No URL</span>`;
-
-    const nativeHost = server.nativeHost
-      ? `<div class="server-native">Native client: <code>${escapeHtml(server.nativeHost)}</code></div>`
+    const playUrl = server.url
+      ? escapeHtml(server.url.replace(/\/+$/, '') + '/play/')
       : '';
+
+    const joinBtn = playUrl
+      ? `<a class="server-join-btn" href="${playUrl}" target="_blank" rel="noopener noreferrer">Play in Browser</a>`
+      : `<span class="server-join-btn server-join-disabled">No URL</span>`;
 
     const established = server.established
       ? `<div class="server-established">Est. ${escapeHtml(server.established)}</div>`
@@ -135,11 +140,45 @@
         <span class="status-text">Checking...</span>
         <span class="player-count"></span>
       </div>
-      ${nativeHost}
+      <div class="server-instances"></div>
       <div class="server-actions">
         ${joinBtn}
       </div>
     </div>`;
+  }
+
+  function renderInstances(card, instances, serverUrl) {
+    const container = card.querySelector('.server-instances');
+    if (!container || !Array.isArray(instances) || instances.length <= 1) return;
+
+    const baseUrl = serverUrl.replace(/\/+$/, '');
+
+    container.innerHTML = `<div class="instance-list-label">Game Modes</div>` +
+      instances.map(function (inst) {
+        const playerCount = inst.connections || 0;
+        const playerText = playerCount === 1 ? '1 player' : playerCount + ' players';
+        const features = (inst.features || []).map(function (f) {
+          return '<span class="server-feature-tag">' + escapeHtml(f) + '</span>';
+        }).join('');
+
+        return '<div class="server-instance">' +
+          '<div class="instance-header">' +
+            '<span class="instance-name">' + escapeHtml(inst.name) + '</span>' +
+            '<span class="instance-players">' + playerText + '</span>' +
+          '</div>' +
+          (inst.description ? '<div class="instance-desc">' + escapeHtml(inst.description) + '</div>' : '') +
+          (features ? '<div class="instance-features">' + features + '</div>' : '') +
+          '<a class="server-join-btn server-join-small" href="' +
+            escapeHtml(baseUrl + '/play/?server=' + encodeURIComponent(inst.id)) +
+            '" target="_blank" rel="noopener noreferrer">Play</a>' +
+          '</div>';
+      }).join('');
+
+    // Update the main Play button to link to first instance
+    const mainBtn = card.querySelector('.server-actions .server-join-btn');
+    if (mainBtn && mainBtn.tagName === 'A') {
+      mainBtn.href = baseUrl + '/play/?server=' + encodeURIComponent(instances[0].id);
+    }
   }
 
   function renderServers() {
@@ -149,25 +188,28 @@
     const servers = getServers();
     grid.innerHTML = servers.map(renderServerCard).join('');
 
-    // Probe each server with a URL for health status
+    // Probe each server for health status and instances
     servers.forEach((server) => {
       if (!server.url) return;
 
-      const id = 'server-' + escapeHtml(server.name || 'Unnamed Server')
-        .replace(/[^a-zA-Z0-9]/g, '-')
-        .toLowerCase();
+      const id = serverCardId(server);
       const card = document.getElementById(id);
       if (!card) return;
 
       const dot = card.querySelector('.status-dot');
       const text = card.querySelector('.status-text');
       const count = card.querySelector('.player-count');
+      const baseUrl = server.url.replace(/\/+$/, '');
 
-      fetch(server.url.replace(/\/+$/, '') + '/health', { mode: 'cors' })
-        .then((r) => {
-          if (!r.ok) throw new Error('not ok');
-          return r.json();
-        })
+      // Fetch health and instances in parallel
+      const healthReq = fetch(baseUrl + '/health', { mode: 'cors' })
+        .then((r) => { if (!r.ok) throw new Error('not ok'); return r.json(); });
+
+      const instancesReq = fetch(baseUrl + '/api/instances', { mode: 'cors' })
+        .then((r) => { if (!r.ok) throw new Error('not ok'); return r.json(); })
+        .catch(() => null);
+
+      healthReq
         .then((data) => {
           dot.classList.remove('status-unknown');
           dot.classList.add('status-online');
@@ -183,6 +225,19 @@
           dot.classList.add('status-offline');
           text.textContent = 'Offline';
         });
+
+      // Render instances if the server has multiple game modes
+      instancesReq.then((instances) => {
+        if (instances) {
+          renderInstances(card, instances, server.url);
+
+          // Update total player count from instances
+          if (Array.isArray(instances) && instances.length > 0) {
+            var total = instances.reduce((sum, inst) => sum + (inst.connections || 0), 0);
+            count.textContent = total + (total === 1 ? ' player' : ' players');
+          }
+        }
+      });
     });
   }
 
