@@ -73,9 +73,9 @@ body {
 }
 
 .logo-icon {
-  font-size: 1.5rem;
   color: var(--accent-gold);
-  text-shadow: 0 0 10px rgba(255,204,0,0.5);
+  filter: drop-shadow(0 0 6px rgba(255,204,0,0.5));
+  vertical-align: middle;
 }
 
 .logo-text {
@@ -929,20 +929,6 @@ kbd {
   letter-spacing: 0.5px;
 }
 
-.server-native {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-}
-
-.server-native code {
-  color: var(--accent-gold);
-  background: rgba(255,204,0,0.1);
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-}
-
 .server-join, .server-join-btn {
   display: inline-block;
   background: var(--accent-gold);
@@ -980,6 +966,65 @@ kbd {
   padding: 3rem 1rem;
   font-style: italic;
   grid-column: 1 / -1;
+}
+
+/* -- Server Instance Sub-cards -- */
+.server-instances {
+  margin-bottom: 1rem;
+}
+
+.instance-list-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.server-instance {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.instance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.server-instance .instance-name {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-heading);
+}
+
+.server-instance .instance-players {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.server-instance .instance-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.server-instance .instance-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.server-join-small {
+  font-size: 0.75rem;
+  padding: 0.3rem 1rem;
 }
 
 /* ---------- Play CTA ---------- */
