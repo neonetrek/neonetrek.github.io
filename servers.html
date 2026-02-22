@@ -38,6 +38,25 @@
     <div class="servers-grid" id="servers-grid">
       <!-- Populated by JS -->
     </div>
+    <div class="add-server-callout">
+      <h3>Add Your Server</h3>
+      <p>Running a NeoNetrek server? Get it listed here by submitting a pull request to the
+        <a href="https://github.com/neonetrek/neonetrek.github.io" target="_blank" rel="noopener noreferrer">website repository</a>.</p>
+      <p>Edit <code>servers.json</code> and add an entry with the following fields:</p>
+      <pre><code>{
+  "name": "Your Server Name",
+  "url": "https://your-server-url.example.com",
+  "location": "City, Country",
+  "region": "region-code",
+  "description": "A short description of your server.",
+  "admin": "Your Name or Team",
+  "adminContact": "https://link-to-contact",
+  "established": "2026",
+  "features": ["Feature 1", "Feature 2"]
+}</code></pre>
+      <p>Once your PR is reviewed and merged, your server will appear on this page automatically.</p>
+      <a class="btn btn-secondary" href="https://github.com/neonetrek/neonetrek.github.io/edit/main/servers.json" target="_blank" rel="noopener noreferrer">Submit a Server</a>
+    </div>
   </div>
 </section>
 

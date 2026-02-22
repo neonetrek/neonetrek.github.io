@@ -968,6 +968,77 @@ kbd {
   grid-column: 1 / -1;
 }
 
+/* -- Add Your Server Callout -- */
+.add-server-callout {
+  margin-top: 3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.add-server-callout h3 {
+  font-family: var(--font-mono);
+  color: var(--accent-gold);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.add-server-callout p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-server-callout a:not(.btn) {
+  color: var(--accent-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(68,136,255,0.3);
+  transition: border-color 0.2s;
+}
+
+.add-server-callout a:not(.btn):hover {
+  border-color: var(--accent-blue);
+}
+
+.add-server-callout code {
+  background: rgba(68,136,255,0.15);
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+.add-server-callout pre {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem auto 1.5rem;
+  max-width: 500px;
+  text-align: left;
+  overflow-x: auto;
+}
+
+.add-server-callout pre code {
+  background: none;
+  color: var(--text-primary);
+  padding: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.add-server-callout .btn {
+  margin-top: 0.5rem;
+}
+
 /* -- Server Instance Sub-cards -- */
 .server-instances {
   margin-bottom: 1rem;
