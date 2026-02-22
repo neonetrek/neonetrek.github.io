@@ -1,12 +1,22 @@
 /**
- * NeoNetrek - Server Directory
- * Add your server here to appear on the global server list.
+ * NeoNetrek - Server Directory (backward compatibility)
+ *
+ * The canonical server list is now servers.json in this same repo,
+ * fetched at runtime by all portals. This file is kept so the main
+ * website can still use window.NEONETREK_SERVERS as a synchronous
+ * fallback while it migrates to the JSON fetch.
  */
-window.NEONETREK_SERVERS = [
-  {
-    name: "London",
-    url: "https://neonetrek-lhr.fly.dev",
-    location: "London, UK",
-    description: "The first NeoNetrek server. Born from memories of the Sun Lab at UUJ Jordanstown, class of '94\u2013'98.",
-  },
-];
+(function () {
+  window.NEONETREK_SERVERS = window.NEONETREK_SERVERS || [];
+
+  fetch('/servers.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (Array.isArray(data) && data.length > 0) {
+        window.NEONETREK_SERVERS = data;
+      }
+    })
+    .catch(function () {
+      // Fallback: keep whatever was already set
+    });
+})();
