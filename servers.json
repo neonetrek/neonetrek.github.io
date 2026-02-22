@@ -1,12 +1,16 @@
 [
   {
-    "name": "London",
+    "name": "NeoNetrek London",
     "url": "https://neonetrek-lhr.fly.dev",
+    "wsProxy": "wss://neonetrek-lhr.fly.dev/ws",
+    "nativeHost": "neonetrek-lhr.fly.dev:2592",
     "location": "London, UK",
-    "description": "The first NeoNetrek server. Born from memories of the Sun Lab at UUJ Jordanstown, class of '94–'98.",
+    "region": "lhr",
+    "description": "The original NeoNetrek server. Welcome, pilot.",
     "history": "Born from memories of the Sun Lab at UUJ Jordanstown, class of '94–'98. The original deployment that brought Netrek back to the browser.",
     "admin": "NeoNetrek Team",
+    "adminContact": "https://github.com/neonetrek",
     "established": "2026",
-    "features": ["Original server", "Beginner friendly"]
+    "features": ["Original server", "Beginner friendly", "Browser & native client"]
   }
 ]

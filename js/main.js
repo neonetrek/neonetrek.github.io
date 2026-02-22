@@ -109,18 +109,33 @@
     const id = 'server-' + name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
 
     const joinBtn = server.url
-      ? `<a class="server-join-btn" href="${escapeHtml(server.url)}" target="_blank" rel="noopener noreferrer">Join Server</a>`
+      ? `<a class="server-join-btn" href="${escapeHtml(server.url)}" target="_blank" rel="noopener noreferrer">Play in Browser</a>`
       : `<span class="server-join-btn server-join-disabled">No URL</span>`;
+
+    const nativeHost = server.nativeHost
+      ? `<div class="server-native">Native client: <code>${escapeHtml(server.nativeHost)}</code></div>`
+      : '';
+
+    const established = server.established
+      ? `<div class="server-established">Est. ${escapeHtml(server.established)}</div>`
+      : '';
+
+    const features = Array.isArray(server.features) && server.features.length > 0
+      ? `<div class="server-features">${server.features.map(f => `<span class="server-feature-tag">${escapeHtml(f)}</span>`).join('')}</div>`
+      : '';
 
     return `<div class="server-card" id="${id}">
       <div class="server-name">${name}</div>
       <div class="server-location">&gt; ${location}</div>
+      ${established}
       <div class="server-desc">${description}</div>
+      ${features}
       <div class="server-status">
         <span class="status-dot status-unknown"></span>
         <span class="status-text">Checking...</span>
         <span class="player-count"></span>
       </div>
+      ${nativeHost}
       <div class="server-actions">
         ${joinBtn}
       </div>
@@ -208,6 +223,11 @@
   window.addEventListener('DOMContentLoaded', () => {
     renderServers();
     updateActiveNav();
+  });
+
+  // Re-render when servers.json finishes loading (async from servers.js)
+  window.addEventListener('neonetrek:servers', () => {
+    renderServers();
   });
 
   // If DOM already loaded (script order), render immediately

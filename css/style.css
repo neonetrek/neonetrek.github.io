@@ -881,20 +881,69 @@ kbd {
   background: #555;
 }
 
-.status-dot.online {
+.status-dot.online, .status-dot.status-online {
   background: #33ff33;
   box-shadow: 0 0 6px rgba(0,255,0,0.4);
 }
 
-.status-dot.offline {
+.status-dot.offline, .status-dot.status-offline {
   background: #ff3333;
 }
 
-.server-players {
+.status-dot.status-unknown {
+  background: #555;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.server-players, .player-count {
   color: var(--text-secondary);
 }
 
-.server-join {
+.server-established {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.server-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.server-feature-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-blue);
+  border: 1px solid rgba(68,136,255,0.3);
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.server-native {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.server-native code {
+  color: var(--accent-gold);
+  background: rgba(255,204,0,0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+.server-join, .server-join-btn {
   display: inline-block;
   background: var(--accent-gold);
   color: #000;
@@ -907,10 +956,22 @@ kbd {
   transition: all 0.3s;
 }
 
-.server-join:hover {
+.server-join:hover, .server-join-btn:hover {
   background: #ffe044;
   box-shadow: 0 0 15px rgba(255,204,0,0.4);
   transform: translateY(-1px);
+}
+
+.server-join-disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.server-join-disabled:hover {
+  background: #333;
+  box-shadow: none;
+  transform: none;
 }
 
 .servers-empty {

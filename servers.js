@@ -1,10 +1,8 @@
 /**
- * NeoNetrek - Server Directory (backward compatibility)
+ * NeoNetrek - Server Directory
  *
- * The canonical server list is now servers.json in this same repo,
- * fetched at runtime by all portals. This file is kept so the main
- * website can still use window.NEONETREK_SERVERS as a synchronous
- * fallback while it migrates to the JSON fetch.
+ * Fetches servers.json at runtime. Dispatches a 'neonetrek:servers'
+ * event on window when data is ready so main.js can re-render.
  */
 (function () {
   window.NEONETREK_SERVERS = window.NEONETREK_SERVERS || [];
@@ -14,6 +12,7 @@
     .then(function (data) {
       if (Array.isArray(data) && data.length > 0) {
         window.NEONETREK_SERVERS = data;
+        window.dispatchEvent(new Event('neonetrek:servers'));
       }
     })
     .catch(function () {
