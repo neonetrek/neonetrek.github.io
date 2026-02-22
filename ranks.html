@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoNetrek - Rank Progression</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-brand">
+    <span class="logo-icon">&#9733;</span>
+    <a href="index.html" class="logo-text" style="text-decoration:none;color:inherit">NeoNetrek</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.getElementById('navbar').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="academy.html">Academy</a></li>
+    <li><a href="ships.html">Ships</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="ranks.html">Ranks</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="servers.html">Servers</a></li>
+    <li><a href="servers.html" class="btn-play">Play Now</a></li>
+  </ul>
+</nav>
+
+<!-- Ranks Section -->
+<section id="ranks" class="section">
+  <div class="container">
+    <h2 class="section-title">Rank Progression</h2>
+    <p class="section-intro">Advance through 9 military ranks by accumulating T-Mode hours and ratings. Higher ranks unlock advanced ship classes.</p>
+
+    <div class="ranks-table-wrap">
+      <table class="ranks-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Title</th>
+            <th>Code</th>
+            <th>Hours Required</th>
+            <th>Rating Required</th>
+            <th>Offense Required</th>
+            <th>Unlocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="rank-num">0</td><td>Ensign</td><td>Esgn</td><td>0</td><td>0.0</td><td>0.0</td><td>SC, CA</td></tr>
+          <tr><td class="rank-num">1</td><td>Lieutenant</td><td>Lt</td><td>2</td><td>1.0</td><td>0.0</td><td>DD</td></tr>
+          <tr><td class="rank-num">2</td><td>Lt. Commander</td><td>LtCm</td><td>4</td><td>2.0</td><td>0.0</td><td>BB, AS</td></tr>
+          <tr><td class="rank-num">3</td><td>Commander</td><td>Cder</td><td>8</td><td>3.0</td><td>0.0</td><td>SB</td></tr>
+          <tr><td class="rank-num">4</td><td>Captain</td><td>Capt</td><td>15</td><td>4.0</td><td>0.0</td><td>&mdash;</td></tr>
+          <tr><td class="rank-num">5</td><td>Fleet Captain</td><td>FltC</td><td>20</td><td>5.0</td><td>0.0</td><td>&mdash;</td></tr>
+          <tr class="rank-elite"><td class="rank-num">6</td><td>Commodore</td><td>Cdor</td><td>25</td><td>6.0</td><td>1.0</td><td>&mdash;</td></tr>
+          <tr class="rank-elite"><td class="rank-num">7</td><td>Rear Admiral</td><td>RAdm</td><td>30</td><td>7.0</td><td>1.2</td><td>&mdash;</td></tr>
+          <tr class="rank-elite"><td class="rank-num">8</td><td>Admiral</td><td>Admr</td><td>40</td><td>8.0</td><td>1.4</td><td>&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ratings-info">
+      <h3>How Ratings Work</h3>
+      <p>Your total rating is the sum of three components, each measuring a different aspect of your play:</p>
+      <div class="rating-cards">
+        <div class="rating-card">
+          <h4>Offense Rating</h4>
+          <p>Based on your tournament kills relative to the server average. High offense means you're an effective combatant.</p>
+        </div>
+        <div class="rating-card">
+          <h4>Bombing Rating</h4>
+          <p>Based on enemy armies you've bombed on planets. Essential for weakening enemy territory before invasion.</p>
+        </div>
+        <div class="rating-card">
+          <h4>Planet Rating</h4>
+          <p>Based on planets you've conquered by dropping armies. The most strategically important rating &mdash; planets win games.</p>
+        </div>
+      </div>
+      <p class="rating-note">Defense rating is tracked separately and measures your survival skill (ticks alive vs. deaths).</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>NeoNetrek</h4>
+        <p>A modern browser-based reimplementation of the classic Netrek protocol. Open source and community-driven.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="academy.html">Player Guide</a></li>
+          <li><a href="ships.html">Ship Classes</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="academy.html">Academy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="history.html">Game History</a></li>
+          <li><a href="ranks.html">Rank System</a></li>
+          <li><a href="teams.html">Teams &amp; Factions</a></li>
+          <li><a href="index.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <p>Netrek has been bringing players together since 1989. Join the tradition.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>NeoNetrek &copy; 2024&ndash;2026. Based on the original Netrek by Kevin Smith, Terence Chang, and Scott Silvey.</p>
+      <p class="footer-heritage">Keeping the spirit of the internet's first team game alive.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoNetrek - History</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-brand">
+    <span class="logo-icon">&#9733;</span>
+    <a href="index.html" class="logo-text" style="text-decoration:none;color:inherit">NeoNetrek</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.getElementById('navbar').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="academy.html">Academy</a></li>
+    <li><a href="ships.html">Ships</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="ranks.html">Ranks</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="servers.html">Servers</a></li>
+    <li><a href="servers.html" class="btn-play">Play Now</a></li>
+  </ul>
+</nav>
+
+<!-- History Section -->
+<section id="history" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Netrek History</h2>
+    <p class="section-intro">From university labs to the modern web &mdash; the story of the internet's first multiplayer team game.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1988</div>
+        <div class="timeline-content">
+          <h3>Xtrek is Born</h3>
+          <p>Kevin Smith at UC Berkeley creates <em>Xtrek</em>, a two-player space combat game for X Window System terminals on Unix workstations. The game lets two players dogfight over a campus network.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1989</div>
+        <div class="timeline-content">
+          <h3>Netrek Emerges</h3>
+          <p>Terence Chang and Scott Silvey extend Xtrek into <em>Netrek</em>, adding team play, planet conquest, multiple ship types, and support for 16 simultaneous players. It becomes arguably the <strong>first internet team sport</strong>.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1990s</div>
+        <div class="timeline-content">
+          <h3>The Golden Age</h3>
+          <p>Netrek becomes a phenomenon on university networks worldwide. At its peak, around 5,000 players compete daily on dozens of servers. Competitive leagues form &mdash; the International Netrek League (1992), the European Netrek League, and others. In December 1993, Kevin Kelly writes in <em>Wired</em> magazine that Netrek is "team chess on speed, or playing mind hockey," calling it the first online sports game. The saying among students: <em>"GPA + Netrek rating is a constant."</em></p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1993</div>
+        <div class="timeline-content">
+          <h3>IETF Milestone</h3>
+          <p>The Netrek protocol is documented in RFC 1101 discussions and becomes one of the first networked game protocols studied by the internet standards community. The game pioneers concepts still used in multiplayer gaming today.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1994</div>
+        <div class="timeline-content">
+          <h3>The Sun Lab &mdash; University of Ulster at Jordanstown</h3>
+          <p>In the Informatics building at the University of Ulster's Jordanstown campus, students on the Software Engineering BEng programme discover Netrek in the <strong>Sun Lab</strong> &mdash; rows of Sun SPARCstation 5 workstations running Solaris, with their distinctive "pizza box" form factor, networked via NFS and NIS.</p>
+          <p>These were Sun Microsystems machines at the height of the company's influence. The SPARCstation 5, released in March 1994 with a MicroSPARC-II processor, was the workhorse of university computing &mdash; massively outperforming the 486 PCs of the era. Students logged in to Solaris 2.4 or 2.5, navigated OpenWindows (later CDE), and compiled C code with <code>make</code> on a system that was the professional standard for software development.</p>
+          <p>It was also the perfect Netrek platform. The X Window System ran natively, the network was fast and always-on, and there was nothing stopping a group of BEng students from compiling the COW client and spending long hours between lectures fighting over galactic territory. From 1994 to 1998, the class of '94 waged campaigns across the galaxy from those Sun workstations &mdash; memories that would, decades later, inspire NeoNetrek.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1995</div>
+        <div class="timeline-content">
+          <h3>Sun's Golden Era</h3>
+          <p>Sun Microsystems releases the UltraSPARC processor and unveils Java &mdash; transforming both hardware and software. The transition from 32-bit SPARC to 64-bit UltraSPARC marks a generational leap. Meanwhile, Solaris 2.5 becomes the first truly stable Solaris 2.x release, deployed across university labs worldwide. Sun's motto: <em>"The Network Is The Computer"</em> &mdash; a philosophy that Netrek, with its client-server architecture and networked play, embodied perfectly.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2000s</div>
+        <div class="timeline-content">
+          <h3>Evolution Continues</h3>
+          <p>The server codebase matures with features like short packets (bandwidth optimization), LTD stats (detailed tracking), and INL tournament support. Client ports appear for Windows, Mac, and Java.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <div class="timeline-content">
+          <h3>NeoNetrek: Reborn for the Web</h3>
+          <p>Born from the memories of playing Netrek in the Sun Lab at Jordanstown, NeoNetrek brings the classic game to modern browsers via WebSocket and HTML5 Canvas. No downloads needed &mdash; just open a URL and play. The original server protocol is preserved, connected through a WebSocket proxy layer, keeping compatibility with the battle-tested C server.</p>
+          <p>The first NeoNetrek server launches in London &mdash; a tribute to the BEng Software Engineering class of '94&ndash;'98, who spent many an hour between lectures commanding starships from those SPARCstation 5s. The spirit of the Sun Lab lives on.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="history-facts">
+      <h3>Notable Facts</h3>
+      <ul>
+        <li>Netrek is widely considered the <strong>third internet game ever</strong> (after MUD1 and Maze War) and the <strong>first internet team game</strong>.</li>
+        <li>The game predates the World Wide Web &mdash; Tim Berners-Lee proposed the web in 1989, the same year Netrek launched.</li>
+        <li>The original Xtrek players at UC Berkeley used <strong>Sun 3/50 workstations</strong> in the WEB (Workstations in Evans Basement) cluster, running X10 with just 4 MB of memory. Sun workstations remained Netrek's natural habitat throughout its golden age.</li>
+        <li>Netrek was probably the <strong>first game to combine TCP and UDP</strong> &mdash; TCP for reliable data like chat and game state changes, UDP for real-time position updates where occasional packet loss was acceptable. This pattern influenced Quake, Unreal, and virtually every online game since.</li>
+        <li>At peak popularity, some universities had to throttle Netrek traffic because it was consuming too much bandwidth.</li>
+        <li>The game introduced concepts like server-side authority, client-side prediction, and bandwidth-optimized binary protocols that became standard in the game industry.</li>
+        <li>Netrek's code has been continuously maintained as open source for over 35 years, making it one of the longest-lived open source projects.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>NeoNetrek</h4>
+        <p>A modern browser-based reimplementation of the classic Netrek protocol. Open source and community-driven.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="academy.html">Player Guide</a></li>
+          <li><a href="ships.html">Ship Classes</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="academy.html">Academy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="history.html">Game History</a></li>
+          <li><a href="ranks.html">Rank System</a></li>
+          <li><a href="teams.html">Teams &amp; Factions</a></li>
+          <li><a href="index.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <p>Netrek has been bringing players together since 1989. Join the tradition.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>NeoNetrek &copy; 2024&ndash;2026. Based on the original Netrek by Kevin Smith, Terence Chang, and Scott Silvey.</p>
+      <p class="footer-heritage">Keeping the spirit of the internet's first team game alive.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

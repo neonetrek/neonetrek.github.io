@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoNetrek - The Four Empires</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-brand">
+    <span class="logo-icon">&#9733;</span>
+    <a href="index.html" class="logo-text" style="text-decoration:none;color:inherit">NeoNetrek</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.getElementById('navbar').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="academy.html">Academy</a></li>
+    <li><a href="ships.html">Ships</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="ranks.html">Ranks</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="servers.html">Servers</a></li>
+    <li><a href="servers.html" class="btn-play">Play Now</a></li>
+  </ul>
+</nav>
+
+<!-- Teams Section -->
+<section id="teams" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">The Four Empires</h2>
+    <p class="section-intro">Choose your allegiance. Each empire controls 10 planets in their home quadrant of the galaxy.</p>
+
+    <div class="teams-grid">
+      <div class="team-card team-fed">
+        <div class="team-emblem">
+          <svg viewBox="0 0 80 80" width="120" height="120">
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#ffff00" stroke-width="2"/>
+            <polygon points="40,10 46,30 66,30 50,42 56,62 40,50 24,62 30,42 14,30 34,30" fill="#ffff00" opacity="0.8"/>
+          </svg>
+        </div>
+        <h3>Federation</h3>
+        <p class="team-letter">F</p>
+        <p>The stalwart defenders of order and diplomacy. Federation pilots are known for their disciplined tactics and strong team coordination. Home quadrant: <strong>upper-left</strong>.</p>
+      </div>
+
+      <div class="team-card team-rom">
+        <div class="team-emblem">
+          <svg viewBox="0 0 80 80" width="120" height="120">
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#ff0000" stroke-width="2"/>
+            <polygon points="40,12 60,65 40,50 20,65" fill="#ff0000" opacity="0.8"/>
+            <line x1="40" y1="12" x2="40" y2="50" stroke="#ff0000" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Romulan Empire</h3>
+        <p class="team-letter">R</p>
+        <p>Masters of stealth and deception. Romulan captains favor cloaked attacks and ambush tactics. Their cunning makes them formidable opponents. Home quadrant: <strong>upper-right</strong>.</p>
+      </div>
+
+      <div class="team-card team-kli">
+        <div class="team-emblem">
+          <svg viewBox="0 0 80 80" width="120" height="120">
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#00ff00" stroke-width="2"/>
+            <polygon points="40,10 55,30 70,20 60,45 65,70 40,55 15,70 20,45 10,20 25,30" fill="#00ff00" opacity="0.8"/>
+          </svg>
+        </div>
+        <h3>Klingon Empire</h3>
+        <p class="team-letter">K</p>
+        <p>Warriors who live for the glory of battle. Klingon players tend to be aggressive and relentless. Expect all-out assaults and fearless ogging. Home quadrant: <strong>lower-left</strong>.</p>
+      </div>
+
+      <div class="team-card team-ori">
+        <div class="team-emblem">
+          <svg viewBox="0 0 80 80" width="120" height="120">
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#00ccff" stroke-width="2"/>
+            <polygon points="40,12 50,28 68,20 55,40 68,60 50,52 40,68 30,52 12,60 25,40 12,20 30,28" fill="#00ccff" opacity="0.8"/>
+          </svg>
+        </div>
+        <h3>Orion Syndicate</h3>
+        <p class="team-letter">O</p>
+        <p>Pirates and merchants united under a single banner. Orion pilots are unpredictable and resourceful, using unconventional strategies to gain the upper hand. Home quadrant: <strong>lower-right</strong>.</p>
+      </div>
+    </div>
+
+    <div class="galaxy-map">
+      <h3>Galaxy Layout</h3>
+      <div class="map-visual">
+        <svg viewBox="0 0 400 400" width="400" height="400" class="galaxy-svg">
+          <!-- Grid -->
+          <line x1="200" y1="0" x2="200" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4"/>
+          <line x1="0" y1="200" x2="400" y2="200" stroke="#333" stroke-width="1" stroke-dasharray="4"/>
+          <!-- Quadrant labels -->
+          <text x="100" y="100" text-anchor="middle" fill="#ffff00" font-size="16" font-family="monospace">FED</text>
+          <text x="300" y="100" text-anchor="middle" fill="#ff0000" font-size="16" font-family="monospace">ROM</text>
+          <text x="100" y="300" text-anchor="middle" fill="#00ff00" font-size="16" font-family="monospace">KLI</text>
+          <text x="300" y="300" text-anchor="middle" fill="#00ccff" font-size="16" font-family="monospace">ORI</text>
+          <!-- Planets (10 per team, scattered in quadrants) -->
+          <circle cx="60" cy="50" r="5" fill="#ffff00" opacity="0.7"/><circle cx="140" cy="70" r="5" fill="#ffff00" opacity="0.7"/>
+          <circle cx="80" cy="120" r="5" fill="#ffff00" opacity="0.7"/><circle cx="150" cy="150" r="5" fill="#ffff00" opacity="0.7"/>
+          <circle cx="50" cy="170" r="5" fill="#ffff00" opacity="0.7"/><circle cx="120" cy="40" r="5" fill="#ffff00" opacity="0.7"/>
+          <circle cx="170" cy="90" r="5" fill="#ffff00" opacity="0.7"/><circle cx="90" cy="80" r="5" fill="#ffff00" opacity="0.7"/>
+          <circle cx="60" cy="140" r="5" fill="#ffff00" opacity="0.7"/><circle cx="130" cy="180" r="6" fill="#ffff00" opacity="0.9"/>
+
+          <circle cx="260" cy="50" r="5" fill="#ff0000" opacity="0.7"/><circle cx="340" cy="70" r="5" fill="#ff0000" opacity="0.7"/>
+          <circle cx="280" cy="120" r="5" fill="#ff0000" opacity="0.7"/><circle cx="350" cy="150" r="5" fill="#ff0000" opacity="0.7"/>
+          <circle cx="250" cy="170" r="5" fill="#ff0000" opacity="0.7"/><circle cx="320" cy="40" r="5" fill="#ff0000" opacity="0.7"/>
+          <circle cx="370" cy="90" r="5" fill="#ff0000" opacity="0.7"/><circle cx="290" cy="80" r="5" fill="#ff0000" opacity="0.7"/>
+          <circle cx="260" cy="140" r="5" fill="#ff0000" opacity="0.7"/><circle cx="330" cy="180" r="6" fill="#ff0000" opacity="0.9"/>
+
+          <circle cx="60" cy="250" r="5" fill="#00ff00" opacity="0.7"/><circle cx="140" cy="270" r="5" fill="#00ff00" opacity="0.7"/>
+          <circle cx="80" cy="320" r="5" fill="#00ff00" opacity="0.7"/><circle cx="150" cy="350" r="5" fill="#00ff00" opacity="0.7"/>
+          <circle cx="50" cy="370" r="5" fill="#00ff00" opacity="0.7"/><circle cx="120" cy="240" r="5" fill="#00ff00" opacity="0.7"/>
+          <circle cx="170" cy="290" r="5" fill="#00ff00" opacity="0.7"/><circle cx="90" cy="280" r="5" fill="#00ff00" opacity="0.7"/>
+          <circle cx="60" cy="340" r="5" fill="#00ff00" opacity="0.7"/><circle cx="130" cy="380" r="6" fill="#00ff00" opacity="0.9"/>
+
+          <circle cx="260" cy="250" r="5" fill="#00ccff" opacity="0.7"/><circle cx="340" cy="270" r="5" fill="#00ccff" opacity="0.7"/>
+          <circle cx="280" cy="320" r="5" fill="#00ccff" opacity="0.7"/><circle cx="350" cy="350" r="5" fill="#00ccff" opacity="0.7"/>
+          <circle cx="250" cy="370" r="5" fill="#00ccff" opacity="0.7"/><circle cx="320" cy="240" r="5" fill="#00ccff" opacity="0.7"/>
+          <circle cx="370" cy="290" r="5" fill="#00ccff" opacity="0.7"/><circle cx="290" cy="280" r="5" fill="#00ccff" opacity="0.7"/>
+          <circle cx="260" cy="340" r="5" fill="#00ccff" opacity="0.7"/><circle cx="330" cy="380" r="6" fill="#00ccff" opacity="0.9"/>
+          <!-- Border -->
+          <rect x="1" y="1" width="398" height="398" fill="none" stroke="#444" stroke-width="2"/>
+        </svg>
+        <p class="map-caption">40 planets across 4 quadrants &mdash; 100,000 x 100,000 galactic units</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>NeoNetrek</h4>
+        <p>A modern browser-based reimplementation of the classic Netrek protocol. Open source and community-driven.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="academy.html">Player Guide</a></li>
+          <li><a href="ships.html">Ship Classes</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="academy.html">Academy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="history.html">Game History</a></li>
+          <li><a href="ranks.html">Rank System</a></li>
+          <li><a href="teams.html">Teams &amp; Factions</a></li>
+          <li><a href="index.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <p>Netrek has been bringing players together since 1989. Join the tradition.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>NeoNetrek &copy; 2024&ndash;2026. Based on the original Netrek by Kevin Smith, Terence Chang, and Scott Silvey.</p>
+      <p class="footer-heritage">Keeping the spirit of the internet's first team game alive.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

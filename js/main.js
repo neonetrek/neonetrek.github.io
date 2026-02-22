@@ -219,6 +219,17 @@
 
   window.addEventListener('scroll', updateActiveNav);
 
+  // ---------- Nav: highlight current page ----------
+  (function highlightCurrentPage() {
+    const page = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const linkPage = link.getAttribute('href').split('#')[0];
+      if (linkPage === page && !link.classList.contains('btn-play')) {
+        link.style.color = 'var(--accent-gold)';
+      }
+    });
+  })();
+
   // ---------- Init ----------
   window.addEventListener('DOMContentLoaded', () => {
     renderServers();
