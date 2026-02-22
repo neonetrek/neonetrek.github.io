@@ -968,25 +968,6 @@ kbd {
   grid-column: 1 / -1;
 }
 
-/* -- Add Server Link -- */
-.add-server-link {
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-top: 2rem;
-}
-
-.add-server-link a {
-  color: var(--accent-blue);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(68,136,255,0.3);
-  transition: border-color 0.2s;
-}
-
-.add-server-link a:hover {
-  border-color: var(--accent-blue);
-}
-
 /* -- Server Instance Sub-cards -- */
 .server-instances {
   margin-bottom: 1rem;
