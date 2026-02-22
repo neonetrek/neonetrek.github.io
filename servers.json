@@ -1,0 +1,12 @@
+[
+  {
+    "name": "London",
+    "url": "https://neonetrek-lhr.fly.dev",
+    "location": "London, UK",
+    "description": "The first NeoNetrek server. Born from memories of the Sun Lab at UUJ Jordanstown, class of '94–'98.",
+    "history": "Born from memories of the Sun Lab at UUJ Jordanstown, class of '94–'98. The original deployment that brought Netrek back to the browser.",
+    "admin": "NeoNetrek Team",
+    "established": "2024",
+    "features": ["Original server", "Beginner friendly"]
+  }
+]
