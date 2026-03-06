@@ -10,5 +10,16 @@
     "adminContact": "https://github.com/neonetrek",
     "established": "2026",
     "features": ["Original server", "Beginner friendly"]
+  },
+  {
+    "name": "NeoNetrek Washington DC",
+    "url": "https://neonetrek-iad.fly.dev",
+    "location": "Washington DC, US",
+    "region": "iad",
+    "description": "US East Coast NeoNetrek server.",
+    "admin": "NeoNetrek Team",
+    "adminContact": "https://github.com/neonetrek",
+    "established": "2026",
+    "features": ["US East Coast", "Beginner friendly"]
   }
 ]
