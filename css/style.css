@@ -1207,6 +1207,14 @@ kbd {
   text-align: center;
 }
 
+.footer-bottom a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-bottom a:hover { color: var(--accent-gold); }
+
 .footer-bottom p {
   color: var(--text-secondary);
   font-size: 0.8rem;
