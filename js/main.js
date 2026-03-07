@@ -79,7 +79,7 @@
   }
 
   function safeBaseUrl(url) {
-    return safeUrl((url || '').replace(/\/+$/, ''));
+    return safeUrl((url || '').replace(/\/+$/, '')).replace(/\/+$/, '');
   }
 
   const LATENCY_LEVELS = [
