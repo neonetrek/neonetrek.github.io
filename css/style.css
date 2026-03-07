@@ -1115,7 +1115,7 @@ kbd {
 .latency-bars.latency-medium + .latency-text { color: #ff8833; }
 .latency-bars.latency-high + .latency-text { color: #ff3333; }
 
-/* -- Server Portal Link -- */
+/* -- Server Actions Layout -- */
 .server-actions {
   display: flex;
   gap: 0.5rem;
@@ -1123,24 +1123,9 @@ kbd {
   align-items: center;
 }
 
-.server-portal-btn {
-  display: inline-block;
-  font-family: var(--font-mono);
+.server-actions .btn {
   font-size: 0.85rem;
-  font-weight: bold;
   padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s;
-  background: transparent;
-  color: var(--accent-blue);
-  border: 1px solid var(--accent-blue);
-}
-
-.server-portal-btn:hover {
-  background: rgba(68,136,255,0.1);
-  box-shadow: 0 0 15px rgba(68,136,255,0.3);
-  transform: translateY(-1px);
 }
 
 /* ---------- Play CTA ---------- */
