@@ -1109,10 +1109,10 @@ kbd {
   color: var(--text-secondary);
 }
 
-.latency-excellent .latency-text { color: #33ff33; }
-.latency-good .latency-text { color: #88cc33; }
-.latency-medium .latency-text { color: #ff8833; }
-.latency-high .latency-text { color: #ff3333; }
+.latency-bars.latency-excellent + .latency-text { color: #33ff33; }
+.latency-bars.latency-good + .latency-text { color: #88cc33; }
+.latency-bars.latency-medium + .latency-text { color: #ff8833; }
+.latency-bars.latency-high + .latency-text { color: #ff3333; }
 
 /* -- Server Portal Link -- */
 .server-actions {
@@ -1134,6 +1134,7 @@ kbd {
   background: transparent;
   color: var(--accent-blue);
   border: 1px solid var(--accent-blue);
+  margin-top: 0.5rem;
 }
 
 .server-portal-btn:hover {

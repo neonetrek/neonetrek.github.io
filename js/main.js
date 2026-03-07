@@ -70,6 +70,14 @@
     return div.innerHTML;
   }
 
+  function safeUrl(url) {
+    try {
+      var parsed = new URL(url, location.href);
+      if (parsed.protocol === 'https:' || parsed.protocol === 'http:') return url;
+    } catch (e) { /* invalid URL */ }
+    return '';
+  }
+
   // ---------- Server List ----------
   const SAMPLE_SERVERS = [
     {
@@ -113,7 +121,7 @@
     const description = escapeHtml(server.description || '');
     const id = serverCardId(server);
 
-    const baseUrl = server.url ? server.url.replace(/\/+$/, '') : '';
+    const baseUrl = server.url ? safeUrl(server.url.replace(/\/+$/, '')) : '';
     const playUrl = baseUrl ? escapeHtml(baseUrl + '/play/') : '';
 
     const joinBtn = playUrl
@@ -155,8 +163,8 @@
       <div class="server-instances"></div>
       <div class="server-actions">
         ${joinBtn}
-        ${portalBtn}
       </div>
+      ${portalBtn}
     </div>`;
   }
 
@@ -164,7 +172,8 @@
     const container = card.querySelector('.server-instances');
     if (!container || !Array.isArray(instances) || instances.length <= 1) return;
 
-    const baseUrl = serverUrl.replace(/\/+$/, '');
+    const baseUrl = safeUrl(serverUrl.replace(/\/+$/, ''));
+    if (!baseUrl) return;
 
     container.innerHTML = `<div class="instance-list-label">Game Modes</div>` +
       instances.map(function (inst) {
@@ -235,19 +244,24 @@
     cards.forEach(function (card) { grid.appendChild(card); });
   }
 
+  var renderGeneration = 0;
+
   function renderServers() {
     const grid = document.getElementById('servers-grid');
     if (!grid) return;
 
+    const generation = ++renderGeneration;
     const servers = getServers();
     grid.innerHTML = servers.map(renderServerCard).join('');
 
     var pendingLatency = 0;
-    var hasLatencyServers = false;
 
     // Probe each server for health status, latency, and instances
     servers.forEach((server) => {
       if (!server.url) return;
+
+      const baseUrl = safeUrl(server.url.replace(/\/+$/, ''));
+      if (!baseUrl) return;
 
       const id = serverCardId(server);
       const card = document.getElementById(id);
@@ -256,9 +270,7 @@
       const dot = card.querySelector('.status-dot');
       const text = card.querySelector('.status-text');
       const count = card.querySelector('.player-count');
-      const baseUrl = server.url.replace(/\/+$/, '');
 
-      hasLatencyServers = true;
       pendingLatency++;
 
       // Measure latency via health endpoint timing
@@ -279,6 +291,7 @@
 
       healthReq
         .then((data) => {
+          if (generation !== renderGeneration) return;
           dot.classList.remove('status-unknown');
           dot.classList.add('status-online');
           text.textContent = 'Online';
@@ -293,6 +306,7 @@
           updateLatencyDisplay(card, data._latency);
         })
         .catch(() => {
+          if (generation !== renderGeneration) return;
           dot.classList.remove('status-unknown');
           dot.classList.add('status-offline');
           text.textContent = 'Offline';
@@ -302,13 +316,14 @@
         })
         .finally(() => {
           pendingLatency--;
-          if (pendingLatency === 0) {
+          if (pendingLatency === 0 && generation === renderGeneration) {
             sortServersByLatency(grid);
           }
         });
 
       // Render instances if the server has multiple game modes
       instancesReq.then((instances) => {
+        if (generation !== renderGeneration) return;
         if (instances) {
           renderInstances(card, instances, server.url);
 
