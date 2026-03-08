@@ -24,12 +24,6 @@
     return div.innerHTML;
   }
 
-  function serverTag(name) {
-    // Extract short label: "NeoNetrek London" → "London"
-    var short = name.replace(/^NeoNetrek\s*/i, '') || name;
-    return '<span class="server-tag">' + escapeHtml(short) + '</span>';
-  }
-
   function rankDisplay(rank) {
     var r = Math.max(0, Math.min(rank, 8));
     return '<span class="rank-code" title="' + escapeHtml(RANK_NAMES[r]) + '">'
@@ -61,7 +55,7 @@
     });
 
     if (sorted.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="9" class="leaderboard-loading">'
+      tbody.innerHTML = '<tr><td colspan="7" class="leaderboard-loading">'
         + (players.length === 0 ? 'No player data available.' : 'No matching players.')
         + '</td></tr>';
       return;
@@ -74,8 +68,6 @@
       html += '<tr' + elite + '>'
         + '<td>' + rankDisplay(p.rank) + '</td>'
         + '<td class="player-name">' + escapeHtml(p.name) + '</td>'
-        + '<td>' + serverTag(p.server) + '</td>'
-        + '<td class="instance-id">' + escapeHtml(p.instance) + '</td>'
         + '<td class="num">' + p.hours.toFixed(1) + '</td>'
         + '<td class="num">' + p.offense + '</td>'
         + '<td class="num">' + p.bombing + '</td>'
